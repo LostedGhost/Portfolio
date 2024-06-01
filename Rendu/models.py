@@ -29,6 +29,9 @@ class Information(models.Model):
     
     def messages(self):
         return Message_guess.objects.all().order_by("lu", "-id")
+
+    def techs(self):
+        return Technology.objects.all()
     
     def has_unread_messages(self):
         return Message_guess.objects.filter(lu=False).exists()
@@ -81,3 +84,7 @@ class Message_guess(models.Model):
     lu = models.BooleanField(default=False)
     def __str__(self):
         return self
+
+class Technology(models.Model):
+    nom = models.CharField(max_length=255, default='')
+    image = models.ImageField(upload_to="images/tech/")

@@ -1,0 +1,25 @@
+{% extends 'Load/base.html' %}
+{% load static %}
+{% block title %} 500 {% endblock %}
+
+{% block content %}
+<div class="container justify-content-center">
+    <div class="py-5 align-items-center justify-content-center">
+        <div class="row g-0 align-items-center justify-content-center">
+            <div class="col col-xl-4">
+                <div class="card-body p-4">
+                    <h2 class="font-weight-bold display-4">Oups, une erreur est survenue</h2>
+                    <p>Comme si vous étiez perdus!
+                        <br>Peut-être n'êtes vous pas connectés à internet !</p>
+                    <div class="mt-5">	<a href="/" class="btn btn-lg btn-primary px-md-5 radius-30">Acceuil</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-8">
+                <img src="{% static 'assets-admin/images/505-error.png' %}" class="img-fluid" alt="">
+            </div>
+        </div>
+        <!--end row-->
+    </div>
+</div>
+{% endblock %}

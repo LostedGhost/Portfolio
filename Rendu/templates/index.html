@@ -81,19 +81,30 @@
           <div class="col-sm-12">
             <div class="box-shadow-full">
               <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                   <div class="row">
-                    <div class="col-sm-6 col-md-5">
+                    <div class="col-sm-3 col-md-3">
                       <div class="about-img">
                         <img src="{%static 'assets/img/testimonals-1.png' %}" class="img-fluid rounded b-shadow-a" alt="">
                       </div>
                     </div>
-                    <div class="col-sm-6 col-md-7">
-                      <div class="about-info">
+                    <div class="col-sm-9 col-md-9 my-5">
+                      <div class="about-info text-infos">
                         <p><span class="title-s">Nom: </span> <span>{{me.nom_complet}}</span></p>
                         <p><span class="title-s">Profil: </span> <span>{{me.profil}}</span></p>
                         <p><span class="title-s">Email: </span> <span>{{me.email}}</span></p>
-                        <p><span class="title-s">Téléphone: </span> <span>(+229) {{me.telephone}}</span></
+                        <p><span class="title-s">Téléphone: </span> <span>(+229) {{me.telephone}}</span></p>
+                        <div class="socials">
+                          <ul>
+                            <li><a href="https://www.facebook.com/lucio.morningstar.33" target="_blank"><span class="ico-social"><i class="bi bi-facebook my-2"></i></span></a></li>
+                            <li><a href="https://www.instagram.com/lucio_top00?igsh=MTg5cGNjeGJ4bWhjbA==" target="_blank"><span class="ico-social"><i class="bi bi-instagram"></i></span></a></li>
+                            <li><a href="https://x.com/LucioTopanou?t=5IHHVRGgBAb9scRqDZKtZg&s=09" target="_blank"><span class="ico-social"><i class="bi bi-twitter-x"></i></span></a></li>
+                            <li><a href="https://www.linkedin.com/in/lucio-topanou-6365a3240?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank"><span class="ico-social"><i class="bi bi-linkedin"></i></span></a></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="text-cv">
+                        <a href="{%static 'assets/CV_Ludel_TOPANOU.pdf' %}" download="CV_Ludel_TOPANOU.pdf"><button class="btn btn-primary"><i class="bi bi-download"></i> Mon CV</button></a>
                       </div>
                     </div>
                   </div>
@@ -107,7 +118,7 @@
                     {%endfor%}
                   </div>
                 </div>
-                <div class="col-md-6">
+                <!-- <div class="col-md-6">
                   <div class="about-me pt-4 pt-md-0">
                     <div class="title-box-2">
                       <h5 class="title-left">
@@ -118,13 +129,47 @@
                       {{me.a_propos}}
                     </p>
                   </div>
-                </div>
+                </div> -->
               </div>
             </div>
           </div>
         </div>
       </div>
     </section><!-- End About Section -->
+
+    <section id="services" class="services-mf pt-5 route">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="title-box text-center">
+              <h3 class="title-a">
+                TECHNOLOGIES
+              </h3>
+              <p class="subtitle-a">
+                Les technologies que j'utilise.
+              </p>
+              <div class="line-mf"></div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          {%for tech in me.techs%}
+          <div class="col-md-2">
+            <div class="service-box">
+              <div class="service-ico">
+                <span class="ico-circle">
+                  <img src="{{tech.image.url}}" alt="{{tech.nom}}" width="50px">
+                </span>
+              </div>
+              <div class="service-content">
+                <h2 class="s-title">{{tech.nom}}</h2>
+              </div>
+            </div>
+          </div>
+          {%endfor%}
+        </div>
+      </div>
+    </section>
 
     <!-- ======= Services Section ======= -->
     <section id="services" class="services-mf pt-5 route">
@@ -161,6 +206,7 @@
         </div>
       </div>
     </section><!-- End Services Section -->
+
 
     <!-- ======= Counter Section ======= -->
     <div class="section-counter paralax-mf bg-image" style="background-image: url({%static 'assets/img/counters-bg.jpg' %})">
@@ -266,7 +312,7 @@
       </div>
     </div><!-- End Testimonials Section -->
 
-    <div class="paralax-mf">
+    <!-- <div class="paralax-mf">
       <div class="container">
         <div class="row">
           <div class="col-md-12">
@@ -279,7 +325,7 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="paralax-mf footer-paralax bg-image sect-mt4 route" style="background-image: url({%static 'assets/img/overlay-bg.jpg' %})">

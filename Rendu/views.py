@@ -3,6 +3,24 @@ from Rendu.models import *
 from datetime import datetime
 
 # Create your views here.
+def handle404(request, exception):
+    error = request.session.pop("error", None)
+    success = request.session.pop("success", None)
+    password = request.session.get("password", None)
+    if password and Information.objects.filter(password=password).exists():
+        pass
+    else:
+        return redirect("/login")
+    infos = Information.objects.filter(password=password)
+    return render(request, 'error/404.html', {
+        "infos": infos,
+        "error": error,
+        "success": success,
+    })
+
+def handle500(request):
+    return render(request, 'error/500.html')
+
 def index(request):
     success = request.session.pop("success", None)
     error = request.session.pop("error", None)
@@ -405,4 +423,76 @@ def message_read(request, id):
     message.lu = True
     message.save()
     request.session["success"] = "Votre message a bien été lu"
-    return redirect("/messages")
+    return redirect("/messages_guess")
+
+def techs(request):
+    error = request.session.pop("error", None)
+    success = request.session.pop("success", None)
+    password = request.session.get("password", None)
+    if password and Information.objects.filter(password=password).exists():
+        pass
+    else:
+        return redirect("/login")
+    infos = Information.objects.get(password=password)
+    return render(request, "Load/techs.html",{
+        "infos": infos,
+        "error": error,
+        "success": success,
+    })
+
+def tech_add(request):
+    error = request.session.pop("error", None)
+    success = request.session.pop("success", None)
+    password = request.session.get("password", None)
+    if password and Information.objects.filter(password=password).exists():
+        pass
+    else:
+        return redirect("/login")
+    infos = Information.objects.get(password=password)
+    if request.POST:
+        try:
+            tech = Technology(nom=request.POST.get("nom", None).upper(), image=request.FILES["image"])
+            tech.save()
+            request.session["success"] = "Votre technologie a bien été ajoutée"
+        except:
+            request.session["error"] = "Votre technologie n'a pas pu être ajoutée"
+        return redirect("/techs")
+    return render(request, "Load/tech_add.html",{
+        "infos": infos,
+        "error": error,
+        "success": success,
+    })
+
+def tech_edit(request, id):
+    error = request.session.pop("error", None)
+    success = request.session.pop("success", None)
+    password = request.session.get("password", None)
+    if password and Information.objects.filter(password=password).exists():
+        pass
+    else:
+        return redirect("/login")
+    infos = Information.objects.get(password=password)
+    tech = Technology.objects.get(id=id)
+    if request.POST:
+        try:
+            tech.nom = request.POST.get("nom", None).upper()
+            img = request.FILES.get("image", None)
+            if img:
+                tech.image = img
+            tech.save()
+            request.session["success"] = "Votre technologie a bien été modifiée"
+        except:
+            request.session["error"] = "Votre technologie n'a pas pu être modifiée"
+        return redirect("/techs")
+    return render(request, "Load/tech_edit.html",{
+            "infos": infos,
+            "tech": tech,
+            "error": error,
+            "success": success,
+        })
+
+def tech_delete(request, id):
+    tech = Technology.objects.get(id=id)
+    tech.delete()
+    request.session["success"] = "Votre technologie a bien été supprimé"
+    return redirect("/techs")

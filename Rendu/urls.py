@@ -28,6 +28,11 @@ urlpatterns = [
     path(r'projet_edit/<int:id>', views.projet_edit, name="projet_edit"),
     path(r'projet_delete/<int:id>', views.projet_delete, name="projet_delete"),
     
+    path(r'techs', views.techs, name="techs"),
+    path(r'tech_add', views.tech_add, name="tech_add"),
+    path(r'tech_edit/<int:id>', views.tech_edit, name="tech_edit"),
+    path(r'tech_delete/<int:id>', views.tech_delete, name="tech_delete"),
+    
     path(r'messages_guess', views.messages, name="messages"),
     path(r'message_read/<int:id>', views.message_read, name="message_read"),
     

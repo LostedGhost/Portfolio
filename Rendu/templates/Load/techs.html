@@ -1,0 +1,43 @@
+{%extends "Load/base.html" %}
+{%block content %}
+<div class="row mt-3">
+    <div class="col-lg-12">
+        <div class="card">
+            <div class="card-body">
+                <a href="/tech_add"><button class="btn btn-primary my-3"> <i class="zmdi zmdi-plus mr-2"></i>Ajouter</button></a>
+                <div class="table-responsive">
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Nom</th>
+                              <th scope="col">Image</th>
+                              <th scope="col">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%if not infos.projets.exists %}
+                            <tr><p class="text-center bg-danger p-2">Pas de technologies</p></tr>
+                            {%endif%}
+                            {%for tech in infos.techs %}
+                            <tr>
+                                <th scope="row">{{forloop.counter}}</th>
+                                <td>{{tech.nom}}</td>
+                                <td class="text-center">
+                                    <img src="{%if tech.image %} {{tech.image.url}} {%endif%}" alt="" height="100px">
+                                </td>
+                                <td class="text-right">
+                                    <a href="/tech_edit/{{tech.id}}"><button class="btn btn-primary"><i class="fa fa-edit"></i></button></a>
+                                    <a href="/tech_delete/{{tech.id}}"><button class="btn btn-danger"><i class="fa fa-trash"></i></button></a>
+                                </td>
+                            </tr>
+                            {%endfor%}
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock%}

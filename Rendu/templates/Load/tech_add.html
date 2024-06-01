@@ -1,0 +1,28 @@
+{%extends "Load/base.html" %}
+{%block content %}
+<div class="row mt-3">
+    <div class="col-lg-12 div-center">
+       <div class="card">
+         <div class="card-body">
+         <div class="card-title">Ajout de technologie</div>
+         <hr>
+          <form method="post" enctype="multipart/form-data">
+            {%csrf_token%}
+         <div class="form-group">
+          <label for="input-1">Nom</label>
+          <input type="text" class="form-control" name="nom" placeholder="Nom de la technologie" required>
+         </div>
+           <div class="form-group">
+            <label>Image</label>
+            <input type="file" accept=".png, .jpg, .svg" class="form-control" name="image" required>
+           </div>
+           
+         <div class="form-group div-center">
+          <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i> Enregistrer</button>
+        </div>
+        </form>
+       </div>
+       </div>
+    </div>
+</div>
+{%endblock%}

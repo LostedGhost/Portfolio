@@ -215,6 +215,7 @@ a:hover {
 /*------/ Socials /------*/
 .socials {
   padding: 1.5rem 0;
+  align-items: center;
 }
 
 .socials ul li {
@@ -234,6 +235,24 @@ a:hover {
 
 .socials .ico-circle:hover {
   background-color: #0078ff;
+  color: #fff;
+  box-shadow: 0 0 0 3px #cde1f8;
+  transition: all 500ms ease;
+}
+
+.socials .ico-social {
+  height: 40px;
+  width: 40px;
+  font-size: 1.2rem;
+  border-radius: 50%;
+  line-height: 1.6;
+  margin: 0 15px 0 0;
+  box-shadow: 0 0 0 3px #7d8794;
+  transition: all 500ms ease;
+}
+
+.socials .ico-social:hover {
+  background-color: #7d8794;
   color: #fff;
   box-shadow: 0 0 0 3px #cde1f8;
   transition: all 500ms ease;
@@ -271,6 +290,18 @@ a:hover {
   margin: 0 auto;
   text-align: center;
   box-shadow: 0 0 0 10px #0078ff;
+  display: block;
+}
+
+.ico-social {
+  height: 100px;
+  width: 100px;
+  font-size: 2rem;
+  border-radius: 50%;
+  line-height: 1.55;
+  margin: 0 auto;
+  text-align: center;
+  box-shadow: 0 0 0 10px #7d8794;
   display: block;
 }
 
@@ -878,6 +909,13 @@ a:hover {
   box-shadow: 0 0 0 10px #cde1f8;
 }
 
+.service-box:hover .ico-social {
+  transition: all 500ms ease;
+  color: #fff;
+  background-color: #7d8794;
+  box-shadow: 0 0 0 10px #cde1f8;
+}
+
 .service-box .service-ico {
   margin-bottom: 1rem;
   color: #1e1e1e;
@@ -891,6 +929,18 @@ a:hover {
 }
 
 .service-box .ico-circle i {
+  line-height: 0;
+  font-size: 40px;
+}
+
+.service-box .ico-social {
+  transition: all 500ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-box .ico-social i {
   line-height: 0;
   font-size: 40px;
 }
@@ -925,6 +975,13 @@ a:hover {
 }
 
 .counter-ico .ico-circle {
+  height: 60px;
+  width: 60px;
+  line-height: 1.5;
+  box-shadow: 0 0 0 10px #cde1f8;
+}
+
+.counter-ico .ico-social {
   height: 60px;
   width: 60px;
   line-height: 1.5;
@@ -1459,4 +1516,20 @@ footer .credits {
 
 footer .credits a {
   color: #fff;
+}
+
+.text-infos{
+  text-align: center;
+}
+.text-infos{
+  text-align: end;
+}
+.text-cv{
+  text-align: end;
+}
+
+@media (max-width: 1024px) {
+  .text-cv{
+    text-align: center;
+  }
 }
